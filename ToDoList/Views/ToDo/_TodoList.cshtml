@@ -1,0 +1,16 @@
+﻿@model List<ToDoList.Models.ToDoItem>
+
+
+
+@if (Model.Count > 0)
+{
+    foreach (var todo in Model)
+    {
+        @Html.Partial("_TodoItem", todo)
+    }
+}
+else
+{
+    <p style="font-size:3rem;">There is no Task Available</p>
+}
+

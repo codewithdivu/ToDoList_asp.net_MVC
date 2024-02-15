@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ToDoList.Models.ToDoItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex;flex-direction:row;justify-content:center;margin:2rem 1rem;">
+    <h1>ToDo list</h1>
+</div>
+
+<div id="add-todo" class="mb-3" style="display:flex;flex-direction:row;justify-content:center;">
+    <input type="text" id="new-todo-text" class="form-control" placeholder="Enter your task" />
+    <button id="create-todo" class="btn btn-primary" style="margin-left:1rem;">Create</button>
+</div>
+
+<div id="todo-list" style="display:flex;flex-direction:column;align-items:center;margin-top:2rem; max-height: 350px; overflow-y: auto;">
+     @Html.Partial("_TodoList", Model)
+</div>
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $("#create-todo").click(function () {
+                var text = $("#new-todo-text").val();
+                $.post("/Todo/Create", { text: text }, function (data) {
+                    $("#todo-list").html(data);
+                    $("#new-todo-text").val("");
+                });
+            });
+
+            $(document).on("click", ".delete-todo", function () {
+                var id = $(this).data("id");
+                $.post("/Todo/Delete", { id: id }, function (data) {
+                    $("#todo-list").html(data);
+                });
+            });
+
+            $(document).on("click", ".complete-todo", function () {
+                var id = $(this).data("id");
+                $.post("/Todo/MarkCompleted", { id: id }, function (data) {
+                    $("#todo-list").html(data);
+                });
+            });
+        });
+    </script>
+}

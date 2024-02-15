@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        li a {
+            color: white;
+        }
+
+        footer h5 {
+            color: white;
+        }
+
+        footer p {
+            color: white;
+        }
+
+        footer address {
+            color: white;
+        }
+
+        footer hr {
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-color:#a9dce3;display:flex;flex-direction:column;justify-content:space-between;height:100vh;">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background-color:#7689de;">
+        <div class="container">
+            @Html.ActionLink("TO DO LIST APP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color: white; font-weight: bold;" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @*<div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                </div>*@
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @*<hr />*@
+    <footer class="footer mt-auto py-4 " style="background-color:#7689de;">
+        <div class="container">
+            <div class="row" style="display:flex;align-items:center;">
+                <div class="col-md-6">
+                    <h5>About Us</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam justo at turpis lacinia.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center text-muted">
+                        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+                    </div>
+                </div>
+                @*<div class="col-md-4">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>*@
+                @*<div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <address>
+                        123 Main Street<br>
+                        City, State 12345<br>
+                        Phone: (123) 456-7890<br>
+                        Email: info@example.com
+                    </address>
+                </div>*@
+            </div>
+            <hr>
+            <div class="text-center text-muted">
+                    <p>&copy; 2024 Todo List.</p>
+                </div>
+        </div>
+    </footer>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
