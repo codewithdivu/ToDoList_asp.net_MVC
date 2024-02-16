@@ -1,14 +1,15 @@
 ﻿@model ToDoList.Models.ToDoItem
 
-<div class="todo-item" style="width:850px;display:flex;flex-direction:row;justify-content:space-between;align-items:center;margin-top:1rem;">
-    <div style="border: 1px solid white; border-radius:5px; padding: 0.5rem; width: 600px; background-color: white;">
+<div class="todo-item" style="width:900px;display:flex;flex-direction:row;justify-content:space-between;align-items:center;margin-top:1rem;">
+    <div style="border: 1px solid white; border-radius:5px; padding: 0.5rem; width: 650px; background-color: white;">
         <label class="form-check-label @if(Model.IsCompleted) { <text>completed</text> }">@Model.task</label>
     </div>
     <div>
-        <button class="btn btn-secondary complete-todo mx-2" disabled=@(Model.IsCompleted ? true : false) data-id="@Model.id" style="color:white;">
-            @(Model.IsCompleted ? "Completed" : "MarkCompleted")
+        <button class="btn btn-@(Model.IsCompleted ? "success" : "dark") complete-todo mx-2" data-id="@Model.id" style="color:white;">
+            @(Model.IsCompleted ? "UnComplete It" : "Complete It")
         </button>
         <button class="btn btn-danger delete-todo mx-2" data-id="@Model.id">Delete</button>
     </div>
 
 </div>
+@*disabled=@(Model.IsCompleted ? true : false)*@

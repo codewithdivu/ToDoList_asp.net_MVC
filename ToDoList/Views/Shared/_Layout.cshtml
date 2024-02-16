@@ -30,12 +30,27 @@
         footer hr {
             color: white;
         }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+            /*background: #a9dce3;*/
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #7689de;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body style="background-color:#a9dce3;display:flex;flex-direction:column;justify-content:space-between;height:100vh;">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light" style="background-color:#7689de;">
         <div class="container">
-            @Html.ActionLink("TO DO LIST APP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "color: white; font-weight: bold;" })
+            @Html.ActionLink("TO DO LIST APP", "Index", "ToDo", new { area = "" }, new { @class = "navbar-brand", style = "color: white; font-weight: bold;" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -58,11 +73,11 @@
             <div class="row" style="display:flex;align-items:center;">
                 <div class="col-md-6">
                     <h5>About Us</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquam justo at turpis lacinia.</p>
+                    <p>This is Todo List Web Application where you can create task and delete task also mark as completed task also you can uncomplete it.</p>
                 </div>
                 <div class="col-md-6">
                     <div class="text-center text-muted">
-                        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+                        <p>&copy; 2024 To Do list. All rights reserved.</p>
                     </div>
                 </div>
                 @*<div class="col-md-4">
@@ -75,19 +90,19 @@
                         </ul>
                     </div>*@
                 @*<div class="col-md-6">
-                    <h5>Contact Us</h5>
-                    <address>
-                        123 Main Street<br>
-                        City, State 12345<br>
-                        Phone: (123) 456-7890<br>
-                        Email: info@example.com
-                    </address>
-                </div>*@
+                        <h5>Contact Us</h5>
+                        <address>
+                            123 Main Street<br>
+                            City, State 12345<br>
+                            Phone: (123) 456-7890<br>
+                            Email: info@example.com
+                        </address>
+                    </div>*@
             </div>
             <hr>
             <div class="text-center text-muted">
-                    <p>&copy; 2024 Todo List.</p>
-                </div>
+                <p>&copy; 2024 Todo List.</p>
+            </div>
         </div>
     </footer>
 

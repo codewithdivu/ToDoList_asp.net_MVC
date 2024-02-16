@@ -26,6 +26,7 @@ namespace ToDoList.Controllers
                 ToDoItem toDoItem = new ToDoItem { task = text, IsCompleted = false };
                 db.ToDoItems.Add(toDoItem);
                 db.SaveChanges();
+                TempData["create"] = "Task Created Successfully!";
                 var data = db.ToDoItems.ToList();
                 return PartialView("_TodoList", data);
             }
@@ -34,13 +35,15 @@ namespace ToDoList.Controllers
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public ActionResult Delete(int id) { 
+        public ActionResult Delete(int id)
+        {
             ToDoItem item = db.ToDoItems.Find(id);
             if (item != null)
             {
                 db.ToDoItems.Remove(item);
                 db.SaveChanges();
             }
+            TempData["delete"] = "Task Deleted Successfully!";
             var data = db.ToDoItems.ToList();
             return PartialView("_TodoList", data);
         }
@@ -51,7 +54,29 @@ namespace ToDoList.Controllers
             ToDoItem item = db.ToDoItems.Find(id);
             if (item != null)
             {
-                item.IsCompleted = true;
+                if (item.IsCompleted == true)
+                {
+                    item.IsCompleted = false;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    item.IsCompleted = true;
+                    db.SaveChanges();
+                }
+            }
+            var data = db.ToDoItems.ToList();
+            return PartialView("_TodoList", data);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, string text)
+        {
+            ToDoItem item = db.ToDoItems.Find(id);
+            if (item != null)
+            {
+                item.task = text;
                 db.SaveChanges();
             }
             var data = db.ToDoItems.ToList();

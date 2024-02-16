@@ -1,12 +1,39 @@
 ﻿@model List<ToDoList.Models.ToDoItem>
+@using ToDoList.Helpers;
 
+
+
+@Html.DisplayTempData("create", "Task Created Successfully!", "green")
+@Html.DisplayTempData("delete", "Task Deleted Successfully!", "red")
 
 
 @if (Model.Count > 0)
 {
-    foreach (var todo in Model)
+    if (Model.Count(item => item.IsCompleted == false) > 0)
     {
-        @Html.Partial("_TodoItem", todo)
+        <div>
+            <h5>Un Completed</h5>
+            @foreach (var todo in Model)
+            {
+                if (!todo.IsCompleted)
+                {
+                    @Html.Partial("_TodoItem", todo)
+                }
+            }
+        </div>
+    }
+    if (Model.Count(item => item.IsCompleted) > 0)
+    {
+        <div style="margin-top:2rem;">
+            <h5>Completed</h5>
+            @foreach (var todo in Model)
+            {
+                if (todo.IsCompleted)
+                {
+                    @Html.Partial("_TodoItem", todo)
+                }
+            }
+        </div>
     }
 }
 else
